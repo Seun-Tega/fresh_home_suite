@@ -37,22 +37,13 @@ $stmt = $pdo->query("
 ");
 $menu_items = $stmt->fetchAll();
 
-// Get video from database - FIXED PATH CHECK
-$video = null;
-try {
-    $stmt = $pdo->query("SELECT * FROM videos ORDER BY id DESC LIMIT 1");
-    $video = $stmt->fetch();
-    
-    // Check if video file actually exists
-    if ($video && !empty($video['video_path'])) {
-        $full_path = $_SERVER['DOCUMENT_ROOT'] . '/' . $video['video_path'];
-        if (!file_exists($full_path)) {
-            $video = null; // Video file doesn't exist
-        }
-    }
-} catch (Exception $e) {
-    // Table might not exist yet
-    $video = null;
+// Get video - SIMPLE FILE CHECK (no database needed)
+$video_exists = file_exists('../assets/videos/hotel-tour.mp4');
+$video_path = 'assets/videos/hotel-tour.mp4';
+
+// If not found, try alternative path
+if (!$video_exists) {
+    $video_exists = file_exists('assets/videos/hotel-tour.mp4');
 }
 
 // Get board rooms with images - FIXED
@@ -526,7 +517,7 @@ if (heroImages.length > 1) {
     </div>
 </section>
 
-<!-- Video Section - FIXED -->
+<!-- Video Section - FULLY FIXED -->
 <section class="py-12 sm:py-16 md:py-20 bg-[#0F0F0F] relative overflow-hidden">
     <div class="container mx-auto px-4 relative z-10">
         <div class="text-center mb-8 sm:mb-12">
@@ -536,10 +527,16 @@ if (heroImages.length > 1) {
         
         <div class="max-w-5xl mx-auto">
             <div class="relative aspect-video rounded-2xl overflow-hidden border-2 border-[#C9A45A]/30 shadow-2xl bg-black video-container">
-                <?php if($video && !empty($video['video_path'])): ?>
+                <?php 
+                // Check if video exists using the same method that worked in test-video.php
+                $video_file_path = 'assets/videos/hotel-tour.mp4';
+                $full_file_path = __DIR__ . '/' . $video_file_path;
+                
+                if (file_exists($full_file_path)): 
+                ?>
                     <video controls class="w-full h-full">
-                        <source src="<?php echo SITE_URL . $video['video_path']; ?>" type="video/mp4">
-                        <source src="<?php echo SITE_URL . $video['video_path']; ?>" type="video/webm">
+                        <source src="/fresh-home-suite/assets/videos/hotel-tour.mp4" type="video/mp4">
+                        <source src="assets/videos/hotel-tour.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 <?php else: ?>

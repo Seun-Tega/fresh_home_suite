@@ -40,10 +40,37 @@ require_once 'includes/header.php';
             </div>
             
             <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
-                     alt="Hotel Exterior" class="rounded-2xl h-64 object-cover w-full border-2 border-[#C9A45A]/30">
-                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
-                     alt="Hotel Lobby" class="rounded-2xl h-64 object-cover w-full mt-8 border-2 border-[#C9A45A]/30">
+                <?php 
+                // Check if hero images exist, use local images instead of Unsplash
+                $hero1_path = 'assets/images/hero/hero1.jpg';
+                $hero2_path = 'assets/images/hero/hero2.jpg';
+                $hero3_path = 'assets/images/hero/hero3.jpg';
+                $hero4_path = 'assets/images/hero/hero4.jpg';
+                
+                // Use hero1.jpg for first image
+                if (file_exists($hero1_path)): 
+                ?>
+                    <img src="<?php echo SITE_URL; ?>assets/images/hero/hero1.jpg" 
+                         alt="Hotel Exterior" 
+                         class="rounded-2xl h-64 object-cover w-full border-2 border-[#C9A45A]/30">
+                <?php else: ?>
+                    <div class="rounded-2xl h-64 w-full bg-gradient-to-br from-[#C9A45A]/20 to-[#A8843F]/20 flex items-center justify-center border-2 border-[#C9A45A]/30">
+                        <i class="fas fa-hotel text-5xl text-[#C9A45A]/50"></i>
+                    </div>
+                <?php endif; ?>
+                
+                <?php 
+                // Use hero2.jpg for second image
+                if (file_exists($hero2_path)): 
+                ?>
+                    <img src="<?php echo SITE_URL; ?>assets/images/hero/hero2.jpg" 
+                         alt="Hotel Lobby" 
+                         class="rounded-2xl h-64 object-cover w-full mt-8 border-2 border-[#C9A45A]/30">
+                <?php else: ?>
+                    <div class="rounded-2xl h-64 w-full mt-8 bg-gradient-to-br from-[#C9A45A]/20 to-[#A8843F]/20 flex items-center justify-center border-2 border-[#C9A45A]/30">
+                        <i class="fas fa-concierge-bell text-5xl text-[#C9A45A]/50"></i>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -118,54 +145,7 @@ require_once 'includes/header.php';
     </div>
 </section>
 
-<!-- Team -->
-<section class="py-20 bg-gradient-to-r from-[#0F0F0F] to-[#0F0F0F] relative overflow-hidden">
-    <div class="absolute inset-0 bg-[#C9A45A]/5"></div>
-    <div class="container mx-auto px-4 relative z-10">
-        <h2 class="text-4xl font-bold text-center text-[#F5F5F5] mb-4" data-aos="fade-up">Our Team</h2>
-        <p class="text-xl text-center text-[#F5F5F5]/70 mb-12" data-aos="fade-up" data-aos-delay="100">
-            Meet the people who make Fresh Home & Suite Hotel special
-        </p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Team Member 1 -->
-            <div class="bg-[#F5F5F5]/10 backdrop-blur-lg rounded-2xl p-6 text-center hover-scale border border-[#C9A45A]/20" data-aos="flip-left">
-                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="CEO" 
-                     class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-[#C9A45A]">
-                <h3 class="text-xl font-bold text-[#F5F5F5]">John Doe</h3>
-                <p class="text-[#C9A45A] mb-3">CEO & Founder</p>
-                <p class="text-[#F5F5F5]/70 text-sm">20+ years in hospitality</p>
-            </div>
-            
-            <!-- Team Member 2 -->
-            <div class="bg-[#F5F5F5]/10 backdrop-blur-lg rounded-2xl p-6 text-center hover-scale border border-[#C9A45A]/20" data-aos="flip-left" data-aos-delay="100">
-                <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="GM" 
-                     class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-[#C9A45A]">
-                <h3 class="text-xl font-bold text-[#F5F5F5]">Jane Smith</h3>
-                <p class="text-[#C9A45A] mb-3">General Manager</p>
-                <p class="text-[#F5F5F5]/70 text-sm">Ensures perfect stays</p>
-            </div>
-            
-            <!-- Team Member 3 -->
-            <div class="bg-[#F5F5F5]/10 backdrop-blur-lg rounded-2xl p-6 text-center hover-scale border border-[#C9A45A]/20" data-aos="flip-left" data-aos-delay="200">
-                <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Chef" 
-                     class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-[#C9A45A]">
-                <h3 class="text-xl font-bold text-[#F5F5F5]">Mike Johnson</h3>
-                <p class="text-[#C9A45A] mb-3">Executive Chef</p>
-                <p class="text-[#F5F5F5]/70 text-sm">Creates culinary magic</p>
-            </div>
-            
-            <!-- Team Member 4 -->
-            <div class="bg-[#F5F5F5]/10 backdrop-blur-lg rounded-2xl p-6 text-center hover-scale border border-[#C9A45A]/20" data-aos="flip-left" data-aos-delay="300">
-                <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="Events" 
-                     class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-[#C9A45A]">
-                <h3 class="text-xl font-bold text-[#F5F5F5]">Sarah Williams</h3>
-                <p class="text-[#C9A45A] mb-3">Events Manager</p>
-                <p class="text-[#F5F5F5]/70 text-sm">Makes events memorable</p>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <!-- Stats -->
 <section class="py-20 bg-[#0F0F0F]">

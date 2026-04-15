@@ -128,21 +128,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     <i class="fas fa-bed w-6 mr-3 text-[#C9A45A]"></i>
                     <span>Rooms</span>
                 </a>
-                <a href="<?php echo SITE_URL; ?>boardroom.php" 
-                   class="flex items-center py-3 px-2 text-[#F5F5F5] hover:text-[#C9A45A] hover:bg-[#C9A45A]/5 transition duration-300 rounded-lg <?php echo (strpos($current_page, 'boardroom') !== false) ? 'text-[#C9A45A] bg-[#C9A45A]/10' : ''; ?>">
-                    <i class="fas fa-door-open w-6 mr-3 text-[#C9A45A]"></i>
-                    <span>Board Rooms</span>
-                </a>
-                <a href="<?php echo SITE_URL; ?>halls.php" 
-                   class="flex items-center py-3 px-2 text-[#F5F5F5] hover:text-[#C9A45A] hover:bg-[#C9A45A]/5 transition duration-300 rounded-lg <?php echo (strpos($current_page, 'hall') !== false) ? 'text-[#C9A45A] bg-[#C9A45A]/10' : ''; ?>">
-                    <i class="fas fa-building w-6 mr-3 text-[#C9A45A]"></i>
-                    <span>Event Hall</span>
-                </a>
-                <a href="<?php echo SITE_URL; ?>eatery.php" 
-                   class="flex items-center py-3 px-2 text-[#F5F5F5] hover:text-[#C9A45A] hover:bg-[#C9A45A]/5 transition duration-300 rounded-lg <?php echo ($current_page == 'eatery.php') ? 'text-[#C9A45A] bg-[#C9A45A]/10' : ''; ?>">
-                    <i class="fas fa-utensils w-6 mr-3 text-[#C9A45A]"></i>
-                    <span>Restaurant</span>
-                </a>
+            
                 <a href="<?php echo SITE_URL; ?>gallery.php" 
                    class="flex items-center py-3 px-2 text-[#F5F5F5] hover:text-[#C9A45A] hover:bg-[#C9A45A]/5 transition duration-300 rounded-lg <?php echo ($current_page == 'gallery.php') ? 'text-[#C9A45A] bg-[#C9A45A]/10' : ''; ?>">
                     <i class="fas fa-images w-6 mr-3 text-[#C9A45A]"></i>
